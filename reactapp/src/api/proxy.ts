@@ -5,8 +5,8 @@ const giphyUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${api_key}&limi
 export type Gif = {
     title: string;
     rating: string;
-    create_datetime: string;
-    update_datetime: string;
+    import_datetime: string;
+    trending_datetime: string;
     alt_text?: string;
     user?: User;
     images: Image
@@ -16,20 +16,20 @@ type Image = {
     original: OriginalSize;
 }
 
-type User = {
-    username: string;
-}
-
-
 type OriginalSize = {
     width: string;
     height: string;
     webp: string;
 }
 
+type User = {
+    username: string;
+}
+
 type GifResponse = {
     data: Gif[];
 }
+
 
 export const fetchGifs = async (): Promise<GifResponse> => {
 

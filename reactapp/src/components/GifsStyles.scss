@@ -1,0 +1,26 @@
+
+.gif {
+    border-radius:2px;
+
+    .heart {
+        &:hover {
+            color: #d80000;
+        }
+    }
+
+    .subtitle {
+        div {
+            &:first-of-type {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .details {
+            &:hover {
+                color: #ffffff;
+            }
+        }
+    }
+}
