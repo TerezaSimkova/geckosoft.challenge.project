@@ -10,7 +10,7 @@ body {
     padding: 2rem;
     text-align: center;
 
-    @media only screen and (max-width: $mobile) {
+    @media only screen and (max-width: $mobileMax) {
         padding: 0;
     }
 }

@@ -1,5 +1,12 @@
+@import '../utilities/styles.scss';
+
+
 .favouriteBtn {
     span {
         padding: 0 10px;
+
+        @media only screen and (max-width: $mobileMax) {
+            font-size: 12px;
+        }
     }
 }

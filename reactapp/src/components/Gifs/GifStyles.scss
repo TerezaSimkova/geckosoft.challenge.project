@@ -1,3 +1,16 @@
+@import '../utilities/styles.scss';
+
+//I used important here to overrite matrerial UI styles
+.imageList {
+    @media only screen and (max-width: $tabletMax) {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    @media only screen and (max-width: $mobileMax) {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
+
 
 .gif {
     border-radius: 2px;

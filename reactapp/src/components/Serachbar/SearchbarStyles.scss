@@ -2,9 +2,14 @@
 
 .searchbar {
     width: 400px;
-    
-    @media only screen and (max-width: $mobile) {
-        width: 350px;
+
+    @media only screen and (max-width: $tabletMax) {
+        width: 100%;
+        margin: 15px 0px 15px 0px;
+    }
+
+    @media only screen and (max-width: $mobileMax) {
+        width: 100%;
         margin: 15px 0px 15px 0px;
     }
 }

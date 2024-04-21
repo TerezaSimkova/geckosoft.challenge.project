@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { ImageList, ImageListItem, ImageListItemBar, IconButton, Tooltip, Avatar, Skeleton } from "@mui/material";
 
@@ -8,22 +8,24 @@ import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 
 import { Gif } from "../../api/proxy";
 import './GifStyles.scss';
+import { IsMobile } from "../utilities/utilities";
 
 type GifsProps = {
     gifs: Gif[];
     showGifDetails: (value: Gif) => void;
     loading: boolean;
-    isMobile: boolean;
 }
 
-const GifsComponent = ({ gifs, showGifDetails, loading, isMobile }: GifsProps) => {
+const GifsComponent = ({ gifs, showGifDetails, loading }: GifsProps) => {
+
     console.log(gifs.length)
+
     const gifList = () => {
         return (
-            <ImageList gap={3} cols={isMobile ? 1 : 3} rowHeight={100}>
+            <ImageList gap={3} cols={3} rowHeight={100} className="imageList">
                 {
                     loading ?
-                        
+
                         gifs.map((_, index) => {
                             return <Skeleton key={index} variant="rectangular" width="auto" height={400} />
                         })
@@ -101,3 +103,5 @@ const GifsComponent = ({ gifs, showGifDetails, loading, isMobile }: GifsProps) =
 }
 
 export default GifsComponent;
+
+

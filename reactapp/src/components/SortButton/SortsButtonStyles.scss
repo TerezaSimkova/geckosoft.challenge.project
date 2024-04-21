@@ -5,7 +5,12 @@
     flex-direction: row;
     margin-left: 10px;
 
-    @media only screen and (max-width: $mobile) {
+    @media only screen and (max-width: $tabletMax) {
+        width: 100%;
+        margin: 0;
+    }
+
+    @media only screen and (max-width: $mobileMax) {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -14,5 +19,9 @@
 
     span {
         padding: 0 10px;
+
+        @media only screen and (max-width: $mobileMax) {
+            font-size: 12px;
+        }
     }
 }

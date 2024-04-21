@@ -20,7 +20,9 @@ const HeaderSection = ({ sortByOldest, sortByNewest, searchTermValue,handleSearc
 
     return (
         <div className="headerWrapper">
-            <SearchbarComponent searchTermValue={searchTermValue} handleSearch={handleSearch} />
+            <div className="search">
+                <SearchbarComponent searchTermValue={searchTermValue} handleSearch={handleSearch} />
+            </div>
             <div className="buttons">
                 <SortComponent sort={sort} setSort={setSort} sortByOldest={sortByOldest} sortByNewest={sortByNewest} />
                 <FavouritesComponent selected={selected} setSelected={setSelected} />

@@ -1,0 +1,7 @@
+@import './utilities/styles.scss';
+
+.headerWrapper {
+    @media only screen and (max-width: $tabletMax) {
+        flex-direction:column;
+    }
+}

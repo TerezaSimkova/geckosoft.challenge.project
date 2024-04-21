@@ -1,24 +1,43 @@
 @import '../utilities/styles.scss';
 
+@mixin button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .headerWrapper {
     display: flex;
     flex-direction: row;
-    width: auto;
+    width: 100%;
 
-    @media only screen and (max-width: $mobile) {
+    @media only screen and (max-width: $mobileMax) {
         display: flex;
         flex-direction: column;
     }
 
     .buttons {
-        display: flex;
-        flex-direction: row;
-        width: 70%;
-        justify-content: space-between;
+        width: 60%;
+        @include button;
 
-        @media only screen and (max-width: $mobile) {
+        @media only screen and (max-width: $tabletMax) {
+            @include button;
+            width: 100%;
+        }
+
+        @media only screen and (max-width: $mobileMax) {
             display: flex;
             flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    .search {
+        @include button;
+        width: 40%;
+
+        @media only screen and (max-width: $tabletMax) {
+            @include button;
             width: 100%;
         }
     }
