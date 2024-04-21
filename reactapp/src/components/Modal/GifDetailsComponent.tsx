@@ -1,9 +1,13 @@
 import React from "react";
-import Dialog from '@mui/material/Dialog';
+
+import { Dialog, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Table } from '@mui/material';
+
 import { Gif } from "../../api/proxy";
 import IconButton from "@mui/material/IconButton";
 import DialogContent from "@mui/material/DialogContent";
 import CloseIcon from '@mui/icons-material/Close';
+
+import './GifDetailsStyles.scss';
 
 type GifDetailsProps = {
     gif: Gif | undefined;
@@ -17,27 +21,44 @@ const GifDetailsComponent = ({ gif, showDetails, handleClose }: GifDetailsProps)
         const image = gif?.images.original;
 
         return (
-            <div>
+            <div className="detailContainer">
                 <img src={image?.webp} width={image?.width} height={image?.height} />
-                <span>Gif Name:</span><p>{gif.title}</p>
-                <span>Import Date:</span><p>{gif.import_datetime}</p>
-                <span>Trending Date:</span><p>{gif.trending_datetime}</p>
-                <span>Content Rating:</span><p>{gif.rating}</p>
+                <div className="details">
+                    <div className="title">
+                        <h3>Gif Name:</h3>
+                        <p>{gif.title}</p>
+                    </div>
+                    <Paper className="table">
+                        <TableContainer>
+                            <Table sx={{ minWidth: 250 }} arial-label="Gif Details">
+                                <TableHead className="tableHead">
+                                    <TableRow>
+                                        <TableCell>Import Date</TableCell>
+                                        <TableCell>Trending Date</TableCell>
+                                        <TableCell>Rating</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell scope="row">{gif.import_datetime}</TableCell>
+                                        <TableCell scope="row">{gif.trending_datetime}</TableCell>
+                                        <TableCell scope="row">{gif.rating}</TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </Paper>
+                </div>
             </div>
         );
     }
 
     return (
-        <Dialog open={showDetails}>
+        <Dialog open={showDetails} maxWidth="md" className="dialog">
             <IconButton
                 aria-label="Close gif details"
+                className="closeBtn"
                 onClick={() => handleClose(false)}
-                sx={{
-                    position: 'absolute',
-                    right: 8,
-                    top: 8,
-                    color: (theme) => theme.palette.grey[500],
-                }}
             >
                 <CloseIcon />
             </IconButton>

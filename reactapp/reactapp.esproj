@@ -14,10 +14,10 @@
     <Folder Include="public\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\api\" />
-    <Folder Include="src\components\Modal\" />
     <Folder Include="src\components\HeaderSection\" />
     <Folder Include="src\components\Gifs\" />
     <Folder Include="src\components\Favourites\" />
+    <Folder Include="src\components\utilities\" />
     <Folder Include="src\components\SortButton\" />
     <Folder Include="src\components\Serachbar\" />
   </ItemGroup>

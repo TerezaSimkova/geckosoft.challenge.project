@@ -1,0 +1,61 @@
+
+.dialog {
+    width: 100%;
+
+    .MuiDialogContent-root {
+        padding: 0;
+    }
+
+    .detailContainer {
+        width: 100%;
+
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .title {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                h3 {
+                    margin: 5px 15px;
+                }
+
+                p {
+                    margin: 5px 15px;
+                }
+            }
+
+            .table {
+                margin: 10px 15px;
+                width: 95%;
+
+                .tableHead {
+                    background-color: #d9d9d9;
+                }
+            }
+        }
+
+        p {
+            margin: 0;
+        }
+
+        img {
+            width: 100%;
+            height: fit-content;
+        }
+    }
+
+    .closeBtn {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        &:hover {
+            color: #ff0000;
+        }
+    }
+}
