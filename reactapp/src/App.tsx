@@ -1,13 +1,13 @@
 import React from 'react';
 import Container from '@mui/material/Container';
-import GifsComponent from './components/GifsComponent';
+import WrapperComponent from './components/WrapperComponent';
 
 import '../src/App.scss';
 
 const App = () => {
     return (
         <Container id="root" >
-            <GifsComponent />
+            <WrapperComponent />
         </Container>
     );
 }

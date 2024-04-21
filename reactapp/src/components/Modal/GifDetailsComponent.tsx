@@ -12,7 +12,21 @@ type GifDetailsProps = {
 }
 
 const GifDetailsComponent = ({ gif, showDetails, handleClose }: GifDetailsProps) => {
-    const image = gif?.images.original;
+
+    const renderDetails = (gif: Gif) => {
+        const image = gif?.images.original;
+
+        return (
+            <div>
+                <img src={image?.webp} width={image?.width} height={image?.height} />
+                <span>Gif Name:</span><p>{gif.title}</p>
+                <span>Import Date:</span><p>{gif.import_datetime}</p>
+                <span>Trending Date:</span><p>{gif.trending_datetime}</p>
+                <span>Content Rating:</span><p>{gif.rating}</p>
+            </div>
+        );
+    }
+
     return (
         <Dialog open={showDetails}>
             <IconButton
@@ -28,19 +42,7 @@ const GifDetailsComponent = ({ gif, showDetails, handleClose }: GifDetailsProps)
                 <CloseIcon />
             </IconButton>
             <DialogContent>
-                {gif ?
-                    <div>
-                        <img src={image?.webp} width={image?.width} height={image?.height} />
-                        <span>Gif Name:</span><p>{gif.title}</p>
-                        <span>Import Date:</span><p>{gif.import_datetime}</p>
-                        <span>Trending Date:</span><p>{gif.trending_datetime}</p>
-                        <span>Content Rating:</span><p>{gif.rating}</p>
-                    </div>
-                    :
-                    <div>
-                        <p>We are sorry, there are no details.</p>
-                    </div>
-                }
+                {gif && renderDetails(gif)}
             </DialogContent>
         </Dialog>
     );

@@ -1,45 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import IconButton from '@mui/material/IconButton';
+import { ImageList, ImageListItem, ImageListItemBar, IconButton, Tooltip } from "@mui/material";
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import InfoIcon from '@mui/icons-material/InfoRounded';
 
-import { fetchGifs, Gif } from "../api/proxy";
+import { Gif } from "../../api/proxy";
+import './GifStyles.scss';
 
-import './GifsStyles.scss';
-import { Tooltip } from "@mui/material";
-import GifDetailsComponent from "./Modal/GifDetailsComponent";
+type GifsProps = {
+    gifs: Gif[];
+    showGifDetails: (value: Gif) => void;
+}
 
-
-const GifsComponent = () => {
-
-    const [gifs, setGifs] = useState<Gif[]>([]);
-    const [showDetails, setShowDetails] = useState(false);
-    const [gif, setGif] = useState<Gif | undefined>();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            await fetchGifs()
-                .then(json => {
-                    setGifs(json.data);
-                })
-        };
-        fetchData();
-    }, [])
-
-    const showGifDetails = (gif: Gif) => {
-        setGif(gif);
-        console.log(gif);
-        setShowDetails(true);
-    }
-
-    const hideDatils = () => {
-        setShowDetails(false);
-    }
+const GifsComponent = ({ gifs, showGifDetails }: GifsProps) => {
 
     return (
         <ImageList gap={3}>
@@ -92,11 +66,9 @@ const GifsComponent = () => {
                                     </IconButton>
                                 } />\
                         </ImageListItem>
-
                     );
                 })
             }
-            <GifDetailsComponent gif={gif} showDetails={showDetails} handleClose={hideDatils} />
         </ImageList>
     );
 }
