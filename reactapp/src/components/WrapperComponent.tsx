@@ -5,7 +5,7 @@ import GifsComponent from "./Gifs/GifsComponent";
 
 import HeaderSection from "./HeaderSection/HeaderSectionComponent";
 
-import { fetchGifs, Gif, saveGif } from "../api/proxy";
+import { fetchGifs, getFavouritesGifs, Gif, saveGif } from "../api/proxy";
 import { stringToDate } from "./utilities/utilities";
 import './WrapperStyles.scss';
 
@@ -18,6 +18,7 @@ export enum FavouriteState {
 const WrapperComponent = () => {
 
     const [gifs, setGifs] = useState<Gif[]>([]);
+    const [favouriteGifs, setFavouriteGifs] = useState<Gif[]>([]);
     const [gif, setGif] = useState<Gif | undefined>();
     const [showDetails, setShowDetails] = useState(false);
     const [loadingGif, setLoadingGif] = useState(false);
@@ -47,6 +48,14 @@ const WrapperComponent = () => {
         fetchData();
     }, [])
 
+    //See All Favourite
+    const GetAllFavouriteGifs = (username: string) => {
+        getFavouritesGifs(username).then(async(res) => {
+            const data = await res.json();
+            setFavouriteGifs(data);
+        }).catch((err) => {console.log("Errore getting favourites gifs.") })
+    }
+
     //Add To favourite
     const AddToFavourite = (gifItem: Gif, key: number) => {
 
@@ -60,8 +69,6 @@ const WrapperComponent = () => {
             }).catch((err) => {console.log("Errrorrrrr") })
         }
         
-        //Fare la chiamata al backend salvando i dati del gif
-        // Si recupera con il ID
     }
 
     //Search 
@@ -96,6 +103,7 @@ const WrapperComponent = () => {
                 sortByNewest={sortByNewest}
                 searchTermValue={searchTerm}
                 handleSearch={handleSearchGif}
+                getAllFavouriteGifs={GetAllFavouriteGifs}
             />
             <GifsComponent
                 gifs={searchTerm === '' ? gifs : filterGifs}

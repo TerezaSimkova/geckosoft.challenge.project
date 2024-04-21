@@ -12,6 +12,11 @@ namespace webapi.Server.Core.BusinessLayers.GifLayer
             _gifRepository = gifRepository;
         }
 
+        public List<GifModel> GetAllFavouriteGifs(string username)
+        {
+            return _gifRepository.GetAll(username);
+        }
+
         public bool SaveGif(GifModel convertGif)
         {
             var saveGif = _gifRepository.Add(convertGif);

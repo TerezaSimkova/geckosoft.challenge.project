@@ -2,7 +2,7 @@
 {
     public interface IRepository<T>
     {
-        public List<T> GetAll();
+        public List<T> GetAll(string? item = null);
         public bool Add(T item);
         public bool Remove(T item);
     }

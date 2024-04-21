@@ -63,3 +63,12 @@ export const saveGif = (gif: Gif) => {
         body: JSON.stringify(gifToSave)
     });
 }
+export const getFavouritesGifs = (username: string)=> {
+
+    return fetch("/api/gif?username=" + username, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+}

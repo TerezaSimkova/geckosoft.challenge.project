@@ -1,4 +1,5 @@
-﻿using webapi.Server.Core.Interfaces;
+﻿using System.Linq;
+using webapi.Server.Core.Interfaces;
 using webapi.Server.Core.Models;
 using webapi.Server.Database;
 
@@ -25,22 +26,19 @@ namespace webapi.Server.Core.Repository
             else { return false; }
         }
 
-        public List<GifModel> GetAll()
+        public List<GifModel> GetAll(string? username = null)
         {
-            var gifModel = _context.Gif.Select(gif => new GifModel
+            if(username != null)
             {
-                GifUniqueId = gif.GifUniqueId,
-                Title = gif.Title,
-                GifUrl = gif.GifUrl,
-                Users = gif.Users.Select(user => new UserModel
-                {
-                    UserId = user.UserId,
-                    Username = user.Username
-                }).ToList(),
+                var gifModel = _context.Gif
+                    .Where(gif => gif.Users.Any(user => user.Equals(username)))
+                    .ToList();
 
-            }).ToList();
+                return gifModel;
+            }
+            return new List<GifModel>();
 
-            return gifModel;
+            
         }
 
         public bool Remove(GifModel item)

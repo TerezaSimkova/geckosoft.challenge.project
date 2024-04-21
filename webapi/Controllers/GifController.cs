@@ -38,7 +38,7 @@ namespace webapi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll(string username)
+        public IActionResult GetAll([FromQuery]string username)
         {
             if (!string.IsNullOrEmpty(username))
             {

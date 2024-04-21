@@ -4,6 +4,7 @@ import SearchbarComponent from "../Serachbar/SearchbarComponent";
 import FavouritesComponent from "../Favourites/FavouritesComponent";
 import SortComponent from "../SortButton/SortButtonComponent";
 
+import { Gif } from "../../api/proxy";
 import './HeaderSectionStyles.scss';
 
 type HeaderProps = { 
@@ -11,9 +12,10 @@ type HeaderProps = {
     sortByNewest: () => void;
     handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
     searchTermValue: string;
+    getAllFavouriteGifs: (value: string) => void;
 }
 
-const HeaderSection = ({ sortByOldest, sortByNewest, searchTermValue,handleSearch }:HeaderProps) => {
+const HeaderSection = ({ sortByOldest, sortByNewest, searchTermValue,handleSearch,getAllFavouriteGifs}:HeaderProps) => {
 
     const [selected, setSelected] = useState(false);
     const [sort, setSort] = useState(false);
@@ -25,7 +27,7 @@ const HeaderSection = ({ sortByOldest, sortByNewest, searchTermValue,handleSearc
             </div>
             <div className="buttons">
                 <SortComponent sort={sort} setSort={setSort} sortByOldest={sortByOldest} sortByNewest={sortByNewest} />
-                <FavouritesComponent selected={selected} setSelected={setSelected} />
+                <FavouritesComponent selected={selected} setSelected={setSelected} getAllFavouriteGifs={getAllFavouriteGifs } />
             </div>
         </div>
 
