@@ -1,0 +1,10 @@
+@import '../utilities/styles.scss';
+
+.searchbar {
+    width: 400px;
+    
+    @media only screen and (max-width: $mobile) {
+        width: 350px;
+        margin: 15px 0px 15px 0px;
+    }
+}

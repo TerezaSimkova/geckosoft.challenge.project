@@ -1,12 +1,25 @@
+@import '../utilities/styles.scss';
+
 .headerWrapper {
     display: flex;
     flex-direction: row;
     width: auto;
+
+    @media only screen and (max-width: $mobile) {
+        display: flex;
+        flex-direction: column;
+    }
 
     .buttons {
         display: flex;
         flex-direction: row;
         width: 70%;
         justify-content: space-between;
+
+        @media only screen and (max-width: $mobile) {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
     }
 }

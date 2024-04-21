@@ -6,7 +6,7 @@ import GifsComponent from "./Gifs/GifsComponent";
 import HeaderSection from "./HeaderSection/HeaderSectionComponent";
 
 import { fetchGifs, Gif } from "../api/proxy";
-import { stringToDate } from "./utilities/utilities";
+import { IsMobile, stringToDate } from "./utilities/utilities";
 import './WrapperStyles.scss';
 
 const WrapperComponent = () => {
@@ -14,16 +14,37 @@ const WrapperComponent = () => {
     const [gifs, setGifs] = useState<Gif[]>([]);
     const [gif, setGif] = useState<Gif | undefined>();
     const [showDetails, setShowDetails] = useState(false);
+    const [loadingGif, setLoadingGif] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const [isMobile, setIsMobile] = useState(false);
+
+
+    const fetchData = async () => {
+        
+        setLoadingGif(true);
+        //Check windows size 
+        const ismobile = IsMobile();
+        setIsMobile(ismobile);
+
+        //Set timeout just to see loading placeholders
+        setTimeout(async () => {
+            try {
+                const response = await fetchGifs();
+                const data = await response.data;
+
+                setGifs(data);
+                setLoadingGif(false);
+
+            } catch {
+                //Show error messege for user 
+                console.log('Error');
+                setLoadingGif(false);
+            } 
+        }, 3000);
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            await fetchGifs()
-                .then(json => {
-                    setGifs(json.data);
-                })
-        };
-        fetchData();
+         fetchData();
     }, [])
 
     //Search 
@@ -53,9 +74,23 @@ const WrapperComponent = () => {
 
     return (
         <>
-            <HeaderSection sortByOldest={sortByOldest} sortByNewest={sortByNewest} searchTermValue={searchTerm} handleSearch={handleSearchGif} />
-            <GifsComponent gifs={searchTerm === '' ? gifs : filterGifs} showGifDetails={showGifDetails} />
-            <GifDetailsComponent gif={gif} showDetails={showDetails} handleClose={hideDatils} />
+            <HeaderSection
+                sortByOldest={sortByOldest}
+                sortByNewest={sortByNewest}
+                searchTermValue={searchTerm}
+                handleSearch={handleSearchGif}
+            />
+            <GifsComponent
+                gifs={searchTerm === '' ? gifs : filterGifs}
+                showGifDetails={showGifDetails}
+                loading={loadingGif}
+                isMobile={isMobile }
+            />
+            <GifDetailsComponent
+                gif={gif}
+                showDetails={showDetails}
+                handleClose={hideDatils}
+            />
         </>
 
     );
