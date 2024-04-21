@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { ImageList, ImageListItem, ImageListItemBar, IconButton, Tooltip, Avatar, Skeleton } from "@mui/material";
 
@@ -7,18 +7,19 @@ import InfoIcon from '@mui/icons-material/InfoRounded';
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 
 import { Gif } from "../../api/proxy";
+import { FavouriteState } from "../WrapperComponent";
 import './GifStyles.scss';
-import { IsMobile } from "../utilities/utilities";
+
 
 type GifsProps = {
     gifs: Gif[];
     showGifDetails: (value: Gif) => void;
+    addToFavourite: (value: Gif, key: number) => void;
     loading: boolean;
+    favourite: boolean[];
 }
 
-const GifsComponent = ({ gifs, showGifDetails, loading }: GifsProps) => {
-
-    console.log(gifs.length)
+const GifsComponent = ({ gifs, showGifDetails, loading, addToFavourite,favourite}: GifsProps) => {
 
     const gifList = () => {
         return (
@@ -53,9 +54,9 @@ const GifsComponent = ({ gifs, showGifDetails, loading }: GifsProps) => {
                                         title={image === null ? "" : ""}
                                         position="top"
                                         actionIcon={
-                                            <IconButton sx={{ color: 'white' }}>
+                                            <IconButton sx={{ color: 'white' }} onClick={() => addToFavourite(item, key)}>
                                                 <Tooltip title="Add to favourites">
-                                                    <FavoriteIcon className="heart" />
+                                                    <FavoriteIcon className="heart" data-heart={favourite[key] ? FavouriteState.active : FavouriteState.unselected} />
                                                 </Tooltip>
                                             </IconButton>
                                         }

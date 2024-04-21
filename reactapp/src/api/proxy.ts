@@ -3,6 +3,7 @@ const api_key = "";
 const giphyUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${api_key}&limit=25&offset=0&rating=g&bundle=messaging_non_clips`;
 
 export type Gif = {
+    id: string;
     title: string;
     rating: string;
     import_datetime: string;
@@ -38,4 +39,27 @@ export const fetchGifs = async (): Promise<GifResponse> => {
         .catch(err => console.log("Error fetching gifs.", err));
     console.log(gifPromise);
     return gifPromise;
+}
+
+
+type SaveGifRequest = {
+    GifUniqueId: string;
+    Title: string;
+    IsFavourite?: boolean;
+}
+
+export const saveGif = (gif: Gif) => {
+    const gifToSave: SaveGifRequest = {
+        GifUniqueId: gif.id,
+        Title: gif.title,
+        IsFavourite: true
+    }
+
+    return fetch("/api/gif", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(gifToSave)
+    });
 }

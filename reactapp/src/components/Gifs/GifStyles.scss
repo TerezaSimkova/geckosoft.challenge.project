@@ -52,3 +52,10 @@
     }
 }
 
+[data-heart = "active"] {
+    color: #d80000;
+}
+
+[data-heart = "unselected"] {
+    color: #bdbdbd;
+}

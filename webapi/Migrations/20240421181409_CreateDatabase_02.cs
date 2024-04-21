@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace webapi.Server.Database.Migrations
+namespace webapi.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDatabase_01 : Migration
+    public partial class CreateDatabase_02 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,8 @@ namespace webapi.Server.Database.Migrations
                 {
                     GifUniqueId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GifUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    GifUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsFavourite = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
