@@ -6,8 +6,12 @@ import SortComponent from "../SortButton/SortButtonComponent";
 
 import './HeaderSectionStyles.scss';
 
+type HeaderProps = { 
+    sortByOldest: () => void;
+    sortByNewest: () => void;
+}
 
-const HeaderSection = () => {
+const HeaderSection = ({ sortByOldest,sortByNewest }:HeaderProps) => {
 
     const [selected, setSelected] = useState(false);
     const [sort, setSort] = useState(false);
@@ -16,7 +20,7 @@ const HeaderSection = () => {
         <div className="headerWrapper">
             <SearchbarComponent />
             <div className="buttons">
-                <SortComponent sort={sort} setSort={setSort} />
+                <SortComponent sort={sort} setSort={setSort} sortByOldest={sortByOldest} sortByNewest={sortByNewest} />
                 <FavouritesComponent selected={selected} setSelected={setSelected} />
             </div>
         </div>

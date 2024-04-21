@@ -24,16 +24,24 @@ const WrapperComponent = () => {
         fetchData();
     }, [])
 
-    //Sort by date
-    //const sortByOldest = () => {
-    //    const sortedCards = [...cards].sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
-    //    setCards(sortedCards);
-    //};
+    //Convert string date to datetime
+    const stringToDate = (date: string): number => {
+        const convertedDate = new Date(date);
+        return convertedDate.getTime();
+    }
 
-    //const sortByNewest = () => {
-    //    const sortedCards = [...cards].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
-    //    setCards(sortedCards);
-    //};
+    //Sort by date
+    const sortByOldest = () => {
+        const sortedGifs = [...gifs].sort((a, b) => stringToDate(a.import_datetime) - stringToDate(b.import_datetime));
+        sortedGifs.map(x => console.log(x.import_datetime + " "));
+        setGifs(sortedGifs);
+    };
+
+    const sortByNewest = () => {
+        const sortedGifs = [...gifs].sort((a, b) => stringToDate(b.import_datetime) - stringToDate(a.import_datetime));
+        sortedGifs.map(x => console.log(x.import_datetime + " "));
+        setGifs(sortedGifs);
+    };
 
     //Datails 
     const showGifDetails = (gif: Gif) => {
@@ -47,7 +55,7 @@ const WrapperComponent = () => {
 
     return (
         <>
-            <HeaderSection />
+            <HeaderSection sortByOldest={sortByOldest} sortByNewest={sortByNewest} />
             <GifsComponent gifs={gifs} showGifDetails={showGifDetails} />
             <GifDetailsComponent gif={gif} showDetails={showDetails} handleClose={hideDatils} />
         </>

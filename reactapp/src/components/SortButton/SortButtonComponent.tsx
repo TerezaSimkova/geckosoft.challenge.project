@@ -7,18 +7,18 @@ import './SortsButtonStyles.scss';
 type SortPros = {
     sort: boolean;
     setSort: (value: boolean) => void;
+    sortByOldest: () => void;
+    sortByNewest: () => void;
 }
 
-const SortComponent = ({ sort, setSort }: SortPros) => {
+const SortComponent = ({ sort, setSort, sortByOldest, sortByNewest }: SortPros) => {
 
     return (
         <div className="sortWrapper">
             <ToggleButton
                 value="check"
                 selected={sort}
-                onChange={() => {
-                    setSort(!sort);
-                }}
+                onChange={() => sortByNewest()}
             >
                 <span>Sort by ascending</span>
                 <FilterListIcon />
@@ -26,9 +26,7 @@ const SortComponent = ({ sort, setSort }: SortPros) => {
             <ToggleButton
                 value="check"
                 selected={sort}
-                onChange={() => {
-                    setSort(!sort);
-                }}
+                onChange={() => sortByOldest()}
             >
                 <span>Sort by descending</span>
                 <FilterListIcon />
