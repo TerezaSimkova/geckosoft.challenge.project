@@ -47,10 +47,11 @@ const WrapperComponent = () => {
 
     return (
         <>
-            <HeaderSection />            
+            <HeaderSection />
             <GifsComponent gifs={gifs} showGifDetails={showGifDetails} />
             <GifDetailsComponent gif={gif} showDetails={showDetails} handleClose={hideDatils} />
         </>
+
     );
 }
 

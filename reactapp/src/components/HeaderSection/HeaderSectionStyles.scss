@@ -1,4 +1,12 @@
 .headerWrapper {
-    display:flex;
+    display: flex;
     flex-direction: row;
+    width: auto;
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-between;
+    }
 }

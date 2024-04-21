@@ -16,7 +16,7 @@ type GifsProps = {
 const GifsComponent = ({ gifs, showGifDetails }: GifsProps) => {
 
     return (
-        <ImageList gap={3}>
+        <ImageList gap={3} cols={3} rowHeight={100}>
             {
                 gifs.map((item, key) => {
 

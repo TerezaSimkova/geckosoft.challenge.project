@@ -13,12 +13,15 @@ const HeaderSection = () => {
     const [sort, setSort] = useState(false);
 
     return (
-        <div className="headerWrapper"> 
+        <div className="headerWrapper">
             <SearchbarComponent />
-            <SortComponent sort={sort} setSort={setSort } />
-            <FavouritesComponent selected={selected} setSelected={setSelected} />
+            <div className="buttons">
+                <SortComponent sort={sort} setSort={setSort} />
+                <FavouritesComponent selected={selected} setSelected={setSelected} />
+            </div>
         </div>
-       
+
+
     );
 }
 

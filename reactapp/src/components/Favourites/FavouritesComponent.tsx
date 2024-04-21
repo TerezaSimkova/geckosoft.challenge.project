@@ -7,18 +7,19 @@ type FavouritePros = {
     setSelected: (value: boolean) => void;
 }
 
-const FavouritesComponent = ({selected,setSelected }: FavouritePros) => {
+const FavouritesComponent = ({ selected, setSelected }: FavouritePros) => {
 
     return (
         <ToggleButton
-                value="check"
-                selected={selected}
-                onChange={() => {
-                    setSelected(!selected);
-                }}
-            >
-                 <FavoriteIcon />
-         </ToggleButton>
+            value="check"
+            selected={selected}
+            onChange={() => {
+                setSelected(!selected);
+            }}
+        >
+            <span>See my favourites</span>
+            <FavoriteIcon />
+        </ToggleButton>
     )
 }
 
