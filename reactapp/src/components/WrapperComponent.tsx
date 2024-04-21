@@ -12,8 +12,9 @@ import './WrapperStyles.scss';
 const WrapperComponent = () => {
 
     const [gifs, setGifs] = useState<Gif[]>([]);
-    const [showDetails, setShowDetails] = useState(false);
     const [gif, setGif] = useState<Gif | undefined>();
+    const [showDetails, setShowDetails] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,6 +25,12 @@ const WrapperComponent = () => {
         };
         fetchData();
     }, [])
+
+    //Search 
+    const filterGifs = gifs.filter(gif => gif.title.toLowerCase().includes(searchTerm.toLowerCase()));
+    const handleSearchGif = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    }
 
     //Sort by date
     const sortByOldest = () => {
@@ -46,8 +53,8 @@ const WrapperComponent = () => {
 
     return (
         <>
-            <HeaderSection sortByOldest={sortByOldest} sortByNewest={sortByNewest} />
-            <GifsComponent gifs={gifs} showGifDetails={showGifDetails} />
+            <HeaderSection sortByOldest={sortByOldest} sortByNewest={sortByNewest} searchTermValue={searchTerm} handleSearch={handleSearchGif} />
+            <GifsComponent gifs={searchTerm === '' ? gifs : filterGifs} showGifDetails={showGifDetails} />
             <GifDetailsComponent gif={gif} showDetails={showDetails} handleClose={hideDatils} />
         </>
 
