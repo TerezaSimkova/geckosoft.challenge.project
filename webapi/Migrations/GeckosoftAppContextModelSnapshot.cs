@@ -34,7 +34,7 @@ namespace webapi.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("UserGif");
+                    b.ToTable("UserGif", (string)null);
                 });
 
             modelBuilder.Entity("webapi.Server.Core.Models.GifModel", b =>
@@ -55,7 +55,7 @@ namespace webapi.Migrations
 
                     b.HasKey("GifUniqueId");
 
-                    b.ToTable("Gif");
+                    b.ToTable("Gif", (string)null);
                 });
 
             modelBuilder.Entity("webapi.Server.Core.Models.UserModel", b =>
@@ -72,7 +72,7 @@ namespace webapi.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("UserGif", b =>

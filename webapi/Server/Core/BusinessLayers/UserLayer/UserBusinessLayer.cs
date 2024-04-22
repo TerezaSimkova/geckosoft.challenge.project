@@ -10,5 +10,11 @@ namespace webapi.Server.Core.BusinessLayers.UserLayer
         {
             _userRepository = userRepository;
         }
+
+        public bool SaveUser(string username)
+        {
+            var isAdded = _userRepository.Add(username);
+            return isAdded;
+        }
     }
 }

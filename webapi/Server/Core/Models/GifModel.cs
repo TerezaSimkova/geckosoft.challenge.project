@@ -7,6 +7,6 @@
         public string GifUrl { get; set; } = string.Empty;
         public bool? IsFavourite { get; set; }
        
-        public List<UserModel> Users { get; set; } = new List<UserModel>();
+        public virtual List<UserModel> Users { get; set; } = new List<UserModel>();
     }
 }

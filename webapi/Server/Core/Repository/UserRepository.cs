@@ -14,18 +14,22 @@ namespace webapi.Server.Core.Repository
             _context = context;
         }
 
-        public bool Add(UserModel item)
+        public bool Add(string username)
         {
-            if (item != null)
+            if (!string.IsNullOrEmpty(username))
             {
-                _context.User.Add(item);
+                var user = new UserModel
+                {
+                    Username = username,
+                };
+                _context.User.Add(user);
                 _context.SaveChanges();
                 return true;
             }
             else { return false; }
         }
 
-        public List<UserModel> GetAll()
+        public List<UserModel> GetAll(string? item = null)
         {
             return _context.User.ToList();
         }

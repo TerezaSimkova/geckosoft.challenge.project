@@ -72,3 +72,16 @@ export const getFavouritesGifs = (username: string)=> {
         }
     });
 }
+
+
+// User
+
+export const saveUser = (username: string) => {
+
+    return fetch("/api/user?username=" + username, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+}

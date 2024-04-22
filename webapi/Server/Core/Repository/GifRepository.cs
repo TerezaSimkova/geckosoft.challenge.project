@@ -31,7 +31,7 @@ namespace webapi.Server.Core.Repository
             if(username != null)
             {
                 var gifModel = _context.Gif
-                    .Where(gif => gif.Users.Any(user => user.Equals(username)))
+                    .Where(gif => gif.Users.Any(user => user.Username.Equals(username)))
                     .ToList();
 
                 return gifModel;

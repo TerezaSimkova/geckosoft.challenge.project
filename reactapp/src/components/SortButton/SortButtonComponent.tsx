@@ -18,7 +18,7 @@ const SortComponent = ({ sort, setSort, sortByOldest, sortByNewest }: SortPros) 
             <ToggleButton
                 value="check"
                 selected={sort}
-                onChange={() => sortByNewest()}
+                onChange={() => sortByOldest()}
             >
                 <span>Sort by ascending</span>
                 <FilterListIcon />
@@ -26,7 +26,7 @@ const SortComponent = ({ sort, setSort, sortByOldest, sortByNewest }: SortPros) 
             <ToggleButton
                 value="check"
                 selected={sort}
-                onChange={() => sortByOldest()}
+                onChange={() => sortByNewest()}
             >
                 <span>Sort by descending</span>
                 <FilterListIcon />

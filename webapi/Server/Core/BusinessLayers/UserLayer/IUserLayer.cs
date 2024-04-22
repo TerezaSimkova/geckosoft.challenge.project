@@ -2,5 +2,6 @@
 {
     public interface IUserLayer
     {
+        public bool SaveUser(string username);
     }
 }

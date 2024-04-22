@@ -4,5 +4,6 @@ namespace webapi.Server.Core.Interfaces
 {
     public interface IGifRepository : IRepository<GifModel>
     {
+        public bool Add(GifModel model);
     }
 }
