@@ -3,7 +3,9 @@
 # Tecnologie Utilizzate:
 
 Backend: C#, Entity Framework
+
 Frontend: React, Typescript, Vite
+
 Librerie: Material UI e Material Icons
 
 ## Struttura del progetto:
