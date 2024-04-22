@@ -1,12 +1,12 @@
 # GeckoSoftProject
 
-#Tecnologie Utilizzate:
+# Tecnologie Utilizzate:
 
 Backend: C#, Entity Framework
 Frontend: React, Typescript, Vite
 Librerie: Material UI e Material Icons
 
-##Struttura del progetto:
+## Struttura del progetto:
 
 Il progetto segue una disposizione modulare, con i singoli componenti suddivisi in cartelle 
 separate e file di stile dedicati. La logica dei singoli componenti lato client è centralizzata 
@@ -25,7 +25,7 @@ dei suoi componenti. Mi piace la sua semplicità, il loro design, la possibilit�
 personalizzarli e la rapidità con cui è possibile creare un'interfaccia per offrire una piacevole 
 esperienza utente.
 
-##Come avviare il progetto:
+## Come avviare il progetto:
 
 1. Scaricare il repository, ramo Master, dal Github repository - geckosoft.challenge.project
 2. Npm install per caricare le librerie
